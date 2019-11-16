@@ -35,11 +35,26 @@ nav {
 
 nav * {
     margin: auto;
+    font-size: 20px;
+    color: #ecf0f1;
+}
+
+nav a {
+    opacity: 80%;
+}
+
+nav a:hover {
+    color: #ecf0f1;
+    opacity: 100%;
 }
 
 #nav-left, #nav-right {
     display: flex;
     flex: 1;
+}
+
+#nav-left *, #nav-right * {
+    margin: 0 4%;
 }
 
 #nav-left {
@@ -52,19 +67,8 @@ nav * {
     justify-content: flex-end;
 }
 
-nav p {
+#nav-title {
     font-size: 40px;
-    color: #ecf0f1;
-}
-
-nav a {
-    margin: 0 4%;
-    font-size: 20px;
-    color: #bdc3c7;
-}
-
-nav a:hover {
-    color: #ecf0f1;
 }
 
 /* Main */
