@@ -48,12 +48,17 @@ nav a:hover {
     opacity: 100%;
 }
 
-#nav-left, #nav-right {
+#nav-section-title {
+    margin-right: 2%;
+    margin-left: 1%;
+}
+
+.nav-section {
     display: flex;
     flex: 1;
 }
 
-#nav-left *, #nav-right * {
+.nav-section * {
     margin: 0 4%;
 }
 
