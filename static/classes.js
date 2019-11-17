@@ -5,7 +5,7 @@ canvasRequest("courses?enrollment_state=active", function (response) {
     const json = JSON.parse(response);
     for (const c of json) {
         const date = new Date(c["start_at"]);
-        if (inSchoolYear(date)) {
+        if (date.getFullYear() > 2015) {
             const a = document.createElement("a");
             a.href = `https://bcp.instructure.com/courses/${c["id"]}`;
             a.target = "_blank";
@@ -36,13 +36,4 @@ function canvasRequest(apiSection, completion) {
 // TODO: get OAuth access token
 function getToken() {
     return "" // Put your access token here
-}
-
-// Checks if given date is in current school year
-// Note: dates are offset by 5 months so dates in the same school year have the same year ending
-const current = new Date();
-current.setMonth(current.getMonth() - 5);
-function inSchoolYear(date) {
-    date.setMonth(date.getMonth() - 5);
-    return date.getFullYear() === current.getFullYear();
 }
