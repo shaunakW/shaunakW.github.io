@@ -19,6 +19,10 @@ a {
     color: #2980b9;
 }
 
+a:link {
+    transition-duration: 0.3s;
+}
+
 a:hover {
     transition-duration: 0.3s;
     color: #3498db;
