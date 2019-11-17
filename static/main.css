@@ -1,17 +1,9 @@
 /* Contains all the basic styling that goes on every page */
 
-/* Custom font */
-@font-face {
-    font-family: Rubik;
-    src: url("../assets/fonts/Rubik-Medium.woff2") format("woff2"),
-         url("../assets/fonts/Rubik-Medium.woff") format('woff'),
-         url("../assets/fonts/Rubik-Medium.ttf") format("truetype");
-}
-
 /* General styling */
 body {
     margin: 0;
-    font-family: Rubik, sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 a {
