@@ -1,5 +1,6 @@
-const main = document.getElementById("main");
+"use strict";
 
+const main = document.getElementById("main");
 // Canvas API doesn't return all courses for some reason
 canvasRequest("courses?enrollment_state=active", function (response) {
     const json = JSON.parse(response);
@@ -11,7 +12,11 @@ canvasRequest("courses?enrollment_state=active", function (response) {
             a.target = "_blank";
             a.style.display = "block";
             a.style.margin = "10px 0";
-            a.innerHTML = c["name"];
+            const pre = document.createElement("pre");
+            pre.style.fontFamily = "Rubik";
+            const name = c["name"].split("-");
+            pre.innerHTML = `${name.slice(0, name.length - 3).join("-")}  -  ${name[name.length - 1]}`;
+            a.appendChild(pre);
             main.appendChild(a);
         }
     }
@@ -35,5 +40,5 @@ function canvasRequest(apiSection, completion) {
 
 // TODO: get OAuth access token
 function getToken() {
-    return "" // Put your access token here
+    return "1737~CwjvaESyrIQUek4bpW4Qz98QmcVK6AP2NcAr8QRPek9ChgLIV9qPtP9O5PftlMhK";
 }
