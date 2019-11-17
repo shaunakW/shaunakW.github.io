@@ -20,6 +20,7 @@ a {
 }
 
 a:hover {
+    transition-duration: 0.3s;
     color: #3498db;
 }
 
@@ -40,7 +41,7 @@ nav * {
 }
 
 nav a {
-    opacity: 80%;
+    opacity: 75%;
 }
 
 nav a:hover {
