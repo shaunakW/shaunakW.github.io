@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:medium">
     <link rel="stylesheet" href="/static/main.css">
     <link rel="icon" href="/assets/images/favicon.png">
+    <style>
+        td {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -22,6 +28,8 @@
     </nav>
     <div id="main">
         <p style="font-size: 32px">Classes:</p>
+        <p id="classes-today" style="font-size: 24px"></p>
+        <table id="classes" style="width: 500px"></table>
     </div>
     <div id="footer">
         <div>
@@ -29,6 +37,8 @@
         </div>
     </div>
 
+    <script src="/static/config.js"></script> <!-- config.js contains app-specific stuff, is ignored by git -->
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.min.js"></script>
     <script src="/static/classes.js"></script>
 </body>
 </html>

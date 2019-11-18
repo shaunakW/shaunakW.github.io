@@ -1,44 +1,86 @@
-"use strict";
-
-const main = document.getElementById("main");
-// Canvas API doesn't return all courses for some reason
-canvasRequest("courses?enrollment_state=active", function (response) {
-    const json = JSON.parse(response);
-    for (const c of json) {
-        const date = new Date(c["start_at"]);
-        if (date.getFullYear() > 2015) {
-            const a = document.createElement("a");
-            a.href = `https://bcp.instructure.com/courses/${c["id"]}`;
-            a.target = "_blank";
-            a.style.display = "block";
-            a.style.margin = "10px 0";
-            const pre = document.createElement("pre");
-            pre.style.fontFamily = "Rubik";
-            const name = c["name"].split("-");
-            pre.innerHTML = `${name.slice(0, name.length - 3).join("-")}  -  ${name[name.length - 1]}`;
-            a.appendChild(pre);
-            main.appendChild(a);
-        }
+const msalConfig = {
+    auth: {
+        // clientId and tenantId from config.js
+        clientId: clientId,
+        authority: "https://login.microsoftonline.com/" + tenantId,
+        redirectUri: window.location.href
     }
+};
+
+const msal = new Msal.UserAgentApplication(msalConfig);
+const classesToday = document.getElementById("classes-today");
+const classes = document.getElementById("classes");
+
+const request = {
+    scopes: ["calendars.read.shared"]
+};
+
+msal.acquireTokenSilent(request).then(function (response) {
+    getClasses(response["accessToken"]);
+}).catch(function (error) {
+    console.log(error);
+    msal.acquireTokenPopup(request).then(function (response) {
+        getClasses(response["accessToken"])
+    }).catch(function (error) {
+        console.log(error);
+    });
 });
 
-// Makes HTTP request to Canvas API
-function canvasRequest(apiSection, completion) {
+const startDate = new Date();
+startDate.setHours(8, 15, 0, 0);
+const endDate = new Date(startDate.valueOf());
+endDate.setHours(14, 45, 0, 0);
+
+function getClasses(accessToken) {
     const xhttp = new XMLHttpRequest();
-    const corsAnywhere = "https://cors-anywhere.herokuapp.com";
-    const url = `https://bcp.instructure.com/api/v1/${apiSection}`;
+    const params = {
+        startDateTime: startDate.toISOString(),
+        endDateTime: endDate.toISOString(),
+        $select: "subject,start,end,isAllDay",
+        $filter: "categories/any(c:c eq 'BCP Schedule')"
+    };
+    const url = getApiUrl("/me/calendarView", params);
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            console.log(JSON.parse(xhttp.responseText));
-            completion(xhttp.responseText);
-        }
+            const json = JSON.parse(xhttp.responseText);
+            console.log(json);
+            if (json["value"].length > 0) {
+                for (const i of json["value"]) {
+                    if (i["isAllDay"]) {
+                        classesToday.innerHTML = "Today: " + i["subject"];
+                    } else {
+                        const subject = i["subject"].split(" - P");
+                        const tr = document.createElement("tr");
+
+                        const startTime = hourMinute(new Date(i["start"]["dateTime"]));
+                        const endTime = hourMinute(new Date(i["end"]["dateTime"]));
+
+                        tr.innerHTML = `<td>Period ${subject[1]} - ${subject[0]}</td><td>${startTime} - ${endTime}</td>`;
+                        classes.appendChild(tr);
+                    }
+                }
+            } else {
+                classes.innerHTML = "Hooray!! No classes today!"
+            }
+        }// else console.log(xhttp.responseText)
     };
-    xhttp.open("GET", `${corsAnywhere}/${url}`, true);
-    xhttp.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+    xhttp.open("GET", url, true);
+    xhttp.setRequestHeader("Authorization", `Bearer ${accessToken}`);
+    xhttp.setRequestHeader("Prefer", 'outlook.timezone="America/Los_Angeles"');
     xhttp.send();
 }
 
-// TODO: get OAuth access token
-function getToken() {
-    return "1737~CwjvaESyrIQUek4bpW4Qz98QmcVK6AP2NcAr8QRPek9ChgLIV9qPtP9O5PftlMhK";
+function getApiUrl(endpoint, params) {
+    let url = `https://graph.microsoft.com/v1.0${endpoint}?`;
+    for (const p in params) {
+        url += `${p}=${params[p]}&`;
+    }
+    return url;
+}
+
+function hourMinute(date) {
+    const hh = (date.getHours() - 1) % 12 + 1;
+    let mm = date.getMinutes();
+    if (mm < 10) mm = "0" + mm;
+    return `${hh}:${mm}`;
 }
