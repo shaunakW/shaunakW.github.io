@@ -15,15 +15,21 @@ const request = {
     scopes: ["calendars.read.shared"]
 };
 
+msal.handleRedirectCallback(function(error, response) {
+    if (error !== null) {
+        console.log("Redirect failed:");
+        console.log(error);
+    } else {
+        getClasses(response["accessToken"])
+    }
+});
+
 msal.acquireTokenSilent(request).then(function (response) {
     getClasses(response["accessToken"]);
 }).catch(function (error) {
+    console.log("Can't sign in silently:");
     console.log(error);
-    msal.acquireTokenPopup(request).then(function (response) {
-        getClasses(response["accessToken"])
-    }).catch(function (error) {
-        console.log(error);
-    });
+    msal.acquireTokenRedirect(request);
 });
 
 const startDate = new Date();
