@@ -83,7 +83,7 @@ function tableRow(subj, start, end) {
     const startTime = hourMinute(start);
     const endTime = hourMinute(end);
 
-    tr.innerHTML = `<td>Period ${subject[1]} - ${subject[0]}</td><td class="time">${startTime} - ${endTime}</td>`;
+    tr.innerHTML = `<td>Period ${subject[1]} - ${subject[0]}</td><td>${startTime} - ${endTime}</td>`;
     return tr;
 }
 

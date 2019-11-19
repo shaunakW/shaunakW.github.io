@@ -11,22 +11,21 @@
             font-size: 24px;
         }
 
-        .class-container {
-            float: left;
+        #left-container {
             padding-right: 20px;
         }
 
+        #main > div {
+            float: left;
+        }
+
         table {
-            width: 475px;
+            width: 450px;
         }
 
         td {
             padding-top: 5px;
             padding-bottom: 5px;
-        }
-
-        td.time {
-            width: 100px;
         }
     </style>
 </head>
@@ -46,11 +45,11 @@
     <div id="main">
         <p style="font-size: 32px; margin: 20px 0;">Classes:</p>
         <hr>
-        <div class="class-container">
+        <div id="left-container">
             <p id="today-order"></p>
             <table id="today"></table>
         </div>
-        <div class="class-container">
+        <div>
             <p id="next-order"></p>
             <table id="next"></table>
         </div>
