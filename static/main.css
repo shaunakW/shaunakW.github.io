@@ -75,8 +75,8 @@ nav a:hover {
 
 /* Main */
 #main {
-    margin-top: 80px;
-    padding: 20px;
+    overflow: auto;
+    padding: 80px 20px 30px 20px;
 }
 
 /* Footer */
