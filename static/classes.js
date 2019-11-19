@@ -60,7 +60,7 @@ function getClasses(accessToken) {
                 if (i.isAllDay) {
                     order.innerHTML = "Today: " + i.subject;
                 } else {
-                    classes.appendChild(tableRow(i));
+                    classes.appendChild(tableRow(i.subject, new Date(i.start.dateTime), new Date(i.end.dateTime)));
                 }
             }
         } else {
@@ -78,22 +78,24 @@ function getClasses(accessToken) {
         const order = document.getElementById("next-order");
         const classes = document.getElementById("next");
         for (const i of json.value) {
+            const start = new Date(i.start.dateTime);
+            const end = new Date(i.end.dateTime);
             if (i.isAllDay) {
-                order.innerHTML = "Next Class Day: " + i.subject;
+                order.innerHTML = `Next Class Day (${start.getMonth() + 1}-${start.getDate()}): ${i.subject}`;
                 break;
             } else {
-                classes.appendChild(tableRow(i));
+                classes.appendChild(tableRow(i.subject, start, end));
             }
         }
     })
 }
 
-function tableRow(event) {
-    const subject = event.subject.split(" - P");
+function tableRow(subj, start, end) {
+    const subject = subj.split(" - P");
     const tr = document.createElement("tr");
 
-    const startTime = hourMinute(new Date(event.start.dateTime));
-    const endTime = hourMinute(new Date(event.end.dateTime));
+    const startTime = hourMinute(start);
+    const endTime = hourMinute(end);
 
     tr.innerHTML = `<td>Period ${subject[1]} - ${subject[0]}</td><td class="time">${startTime} - ${endTime}</td>`;
     return tr;
