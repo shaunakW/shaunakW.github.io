@@ -9,20 +9,6 @@ const msalConfig = {
 
 const msal = new Msal.UserAgentApplication(msalConfig);
 
-// TODO: fix this for both tables
-
-// if (window.innerWidth < 950) {
-//     classes.style.width = window.innerWidth / 2 + "px";
-// }
-//
-// window.onresize = () => {
-//     if (window.innerWidth < 950) {
-//         classes.style.width = window.innerWidth / 2 + "px";
-//     } else {
-//         classes.style.width = "475px";
-//     }
-// };
-
 const request = {
     scopes: ["calendars.read"]
 };
