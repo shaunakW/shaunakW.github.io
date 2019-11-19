@@ -12,7 +12,7 @@ const classesToday = document.getElementById("classes-today");
 const classes = document.getElementById("classes");
 
 const request = {
-    scopes: ["calendars.read.shared"]
+    scopes: ["calendars.read"]
 };
 
 msal.acquireTokenSilent(request).then(function (response) {
