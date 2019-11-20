@@ -1,4 +1,4 @@
-import "./config.js"
+import {clientId, tenantId} from "./config.js";
 
 const msalConfig = {
     auth: {
