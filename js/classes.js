@@ -87,6 +87,8 @@ function tableRow(subj, start, end) {
     return tr;
 }
 
+const logout = document.getElementsByClassName("logout");
+
 function graphApi(endpoint, params, accessToken, completion) {
     let url = `https://graph.microsoft.com/v1.0${endpoint}?`;
     for (const p in params) {
@@ -97,7 +99,13 @@ function graphApi(endpoint, params, accessToken, completion) {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             const json = JSON.parse(xhttp.responseText);
-            completion(json)
+            completion(json);
+            if (logout[0].hidden) {
+                // Show logout items when user is logged in and gets data
+                for (const i of logout) {
+                    i.hidden = false;
+                }
+            }
         }
     };
     xhttp.open("GET", url, true);
