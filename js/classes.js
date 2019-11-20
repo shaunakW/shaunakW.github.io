@@ -1,8 +1,7 @@
-import {clientId, tenantId} from "./config";
+import "./config.js"
 
 const msalConfig = {
     auth: {
-        // clientId and tenantId from config.js
         clientId: clientId,
         authority: "https://login.microsoftonline.com/" + tenantId,
         redirectUri: window.location.href
