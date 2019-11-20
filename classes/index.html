@@ -7,12 +7,8 @@
     <link rel="stylesheet" href="/static/main.css">
     <link rel="icon" href="/assets/images/favicon.png">
     <style>
-        .left-container {
-            padding-left: 5px;
-            padding-right: 20px;
-        }
-
         .section {
+            padding-left: 5px;
             overflow: auto;
         }
 
@@ -24,6 +20,10 @@
             font-size: 32px;
             width: 100%;
             margin: 20px 0;
+        }
+
+        .left-container {
+            padding-right: 20px;
         }
 
         .subsection-title {
@@ -54,9 +54,9 @@
         </div>
     </nav>
     <div id="main">
+        <p class="section-title">Classes:</p>
+        <hr>
         <div class="section">
-            <p class="section-title">Classes:</p>
-            <hr>
             <div class="left-container">
                 <p id="today-order" class="subsection-title"></p>
                 <table id="today"></table>
@@ -67,11 +67,15 @@
             </div>
         </div>
         <!-- Possible next step
+        <p class="section-title">Homework:</p>
+        <hr>
         <div class="section">
-            <p class="section-title">Homework:</p>
-            <hr>
         </div>
         -->
+        <hr>
+        <div class="section">
+            <a class="subsection-title">Logout</a>
+        </div>
     </div>
     <div id="footer">
         <div>
