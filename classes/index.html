@@ -7,16 +7,27 @@
     <link rel="stylesheet" href="/static/main.css">
     <link rel="icon" href="/assets/images/favicon.png">
     <style>
-        #today-order, #next-order {
-            font-size: 24px;
-        }
-
-        #left-container {
+        .left-container {
+            padding-left: 5px;
             padding-right: 20px;
         }
 
-        #main > div {
+        .section {
+            overflow: auto;
+        }
+
+        .section > div {
             float: left;
+        }
+
+        .section-title {
+            font-size: 32px;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .subsection-title {
+            font-size: 24px;
         }
 
         table {
@@ -43,16 +54,24 @@
         </div>
     </nav>
     <div id="main">
-        <p style="font-size: 32px; margin: 20px 0;">Classes:</p>
-        <hr>
-        <div id="left-container">
-            <p id="today-order"></p>
-            <table id="today"></table>
+        <div class="section">
+            <p class="section-title">Classes:</p>
+            <hr>
+            <div class="left-container">
+                <p id="today-order" class="subsection-title"></p>
+                <table id="today"></table>
+            </div>
+            <div>
+                <p id="next-order" class="subsection-title"></p>
+                <table id="next"></table>
+            </div>
         </div>
-        <div>
-            <p id="next-order"></p>
-            <table id="next"></table>
+        <!-- Possible next step
+        <div class="section">
+            <p class="section-title">Homework:</p>
+            <hr>
         </div>
+        -->
     </div>
     <div id="footer">
         <div>
