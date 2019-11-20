@@ -1,3 +1,5 @@
+import {clientId, tenantId} from "./config";
+
 const msalConfig = {
     auth: {
         // clientId and tenantId from config.js
