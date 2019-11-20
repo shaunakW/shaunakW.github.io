@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Today's Classes</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:medium">
-    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="icon" href="/assets/images/favicon.png">
     <style>
         .section {
@@ -74,7 +74,7 @@
         -->
         <hr>
         <div class="section">
-            <a class="subsection-title">Logout</a>
+            <a class="subsection-title" onclick="msal.logout()">Logout</a>
         </div>
     </div>
     <div id="footer">
@@ -83,8 +83,8 @@
         </div>
     </div>
 
-    <script src="/static/config.js"></script>
+    <script src="/js/config.js"></script>
     <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.min.js"></script>
-    <script src="/static/classes.js"></script>
+    <script src="/js/classes.js"></script>
 </body>
 </html>
