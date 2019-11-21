@@ -28,6 +28,7 @@ nav {
     top: 0;
     background-color: #3498db;
     display: flex;
+    font-weight: 500;
 }
 
 nav * {

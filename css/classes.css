@@ -22,6 +22,10 @@
     font-size: 24px;
 }
 
+.logout {
+    font-weight: 500;
+}
+
 table {
     width: 450px;
 }
