@@ -3,18 +3,19 @@
 let navExpanded = false;
 
 const topMenu = document.getElementById('top-menu');
-const dropDown = document.getElementsByClassName('nav-drop-down')[0];
-const dropDownTitle = document.getElementById('drop-down-title');
+const dropDown = document.getElementById('nav-drop-down');
+const dropDownArea = document.getElementById('drop-down-area');
+const dropDownImage = document.getElementById('drop-down-image');
 
-dropDownTitle.onclick = function () {
+dropDownArea.onclick = function () {
     if (navExpanded) {
-        dropDown.style.display = "none";
-        topMenu.style.height = "80px";
-        dropDownTitle.innerHTML = dropDownTitle.innerHTML.replace('▼', '▶');
+        dropDown.style.display = 'none';
+        topMenu.style.height = '80px';
+        dropDownImage.style.transform = 'rotate(0deg)';
     } else {
-        dropDownTitle.innerHTML = dropDownTitle.innerHTML.replace('▶', '▼');
-        dropDown.style.display = "flex";
-        topMenu.style.height = topMenu.clientHeight + dropDown.clientHeight + "px";
+        dropDownImage.style.transform = 'rotate(90deg)';
+        dropDown.style.display = 'flex';
+        topMenu.style.height = topMenu.clientHeight + dropDown.clientHeight + 'px';
     }
     navExpanded = !navExpanded;
 };
