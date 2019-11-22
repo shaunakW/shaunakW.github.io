@@ -38,7 +38,7 @@ a:hover {
 }
 
 #top-menu a {
-    opacity: 75%;
+    opacity: 70%;
 }
 
 #top-menu a:hover {
@@ -61,7 +61,8 @@ nav, #nav-drop-down, .nav-list {
 }
 
 #nav-drop-down {
-    opacity: 0; /* Starts off hidden */
+    display: none; /* Starts off hidden */
+    opacity: 0; /* Starts off with 0 opacity so fade in animation will work */
     flex-direction: column;
     transition-duration: 0.5s;
 }
@@ -77,6 +78,7 @@ nav, #nav-drop-down, .nav-list {
 
 #drop-down-image {
     height: 18px;
+    margin-right: 5px;
     transition-duration: 0.5s;
     transition-timing-function: ease;
 }
