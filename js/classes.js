@@ -15,15 +15,26 @@ const request = {
 };
 
 msal.acquireTokenSilent(request).then(function (response) {
+    authButton.innerHTML = 'Logout';
+    authButton.onclick = () => msal.logout();
     getClasses(response["accessToken"]);
-}).catch(function (error) {
-    console.log(error);
+}).catch(function () {
+    signIn();
+});
+
+const authButton = document.getElementById('sign-in-out');
+
+authButton.onclick = signIn;
+
+function signIn() {
     msal.acquireTokenPopup(request).then(function (response) {
+        authButton.innerHTML = 'Logout';
+        authButton.onclick = () => msal.logout();
         getClasses(response["accessToken"]);
     }).catch(function (error) {
-        console.log(error);
+        alert(error);
     });
-});
+}
 
 const startDate = new Date();
 startDate.setHours(8, 15, 0, 0);
@@ -88,8 +99,6 @@ function tableRow(subj, start, end) {
     return tr;
 }
 
-const logout = document.getElementsByClassName("logout");
-
 function graphApi(endpoint, params, accessToken, completion) {
     let url = `https://graph.microsoft.com/v1.0${endpoint}?`;
     for (const p in params) {
@@ -101,12 +110,7 @@ function graphApi(endpoint, params, accessToken, completion) {
         if (this.readyState === 4 && this.status === 200) {
             const json = JSON.parse(xhttp.responseText);
             completion(json);
-            if (logout[0].hidden) {
-                // Show logout items when user is logged in and gets data
-                for (const i of logout) {
-                    i.hidden = false;
-                }
-            }
+            document.getElementById('logout-separator').hidden = false;
         }
     };
     xhttp.open("GET", url, true);
