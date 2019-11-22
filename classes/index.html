@@ -9,18 +9,23 @@
     <link rel="icon" href="/assets/images/favicon.png">
 </head>
 <body>
-    <nav>
-        <div class="nav-section" id="nav-left">
-            <p id="nav-section-title">Projects:</p>
+    <div id="top-menu">
+        <nav>
+            <div class="nav-section" id="nav-left">
+                <p id="drop-down-title">▶ Projects</p>
+            </div>
+            <p id="nav-title">Shaunak Warty</p>
+            <div class="nav-section nav-list" id="nav-right">
+                <a href="/">Home</a>
+                <a href="https://github.com/shaunakW" target="_blank">Github</a>
+            </div>
+        </nav>
+        <div class="nav-drop-down">
             <a href="http://flaskblog.ga" target="_blank">Flask Blog</a>
             <a href="https://github.com/shaunakW/shaunakW.github.io" target="_blank">This Site</a>
+            <a href="/classes">MyClasses</a>
         </div>
-        <p id="nav-title">Today's Classes</p>
-        <div class="nav-section" id="nav-right">
-            <a href="/">Home</a>
-            <a href="https://github.com/shaunakW" target="_blank">Github</a>
-        </div>
-    </nav>
+    </div>
     <div id="main">
         <p class="section-title">Classes:</p>
         <hr>
@@ -46,11 +51,10 @@
         </div>
     </div>
     <div id="footer">
-        <div>
-            Website icon made by <a href="https://www.flaticon.com/authors/smalllikeart">smalllikeart</a> from <a href="https://www.flaticon.com/">www.flaticon.com</a>
-        </div>
+        Website icon made by <a href="https://www.flaticon.com/authors/smalllikeart">smalllikeart</a> from <a href="https://www.flaticon.com/">www.flaticon.com</a>
     </div>
 
+    <script src="/js/main.js"></script>
     <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.min.js"></script>
     <script type="module" src="/js/classes.js"></script>
 </body>

@@ -21,42 +21,55 @@ a:hover {
 }
 
 /* Navigation bar */
-nav {
+#top-menu {
     width: 100%;
     height: 80px;
     position: fixed;
     top: 0;
     background-color: #3498db;
-    display: flex;
     font-weight: 500;
+    transition-duration: 0.5s;
 }
 
-nav * {
-    margin: auto;
+#top-menu * {
     font-size: 20px;
     color: #ecf0f1;
 }
 
-nav a {
+#top-menu a {
     opacity: 75%;
 }
 
-nav a:hover {
+#top-menu a:hover {
     color: #ecf0f1;
     opacity: 100%;
 }
 
-#nav-section-title {
-    margin-right: 2%;
-    margin-left: 1%;
+nav p, nav a {
+    margin: 0;
+    line-height: 80px;
+}
+
+nav, .nav-drop-down, .nav-list {
+    display: flex;
 }
 
 .nav-section {
-    display: flex;
+    height: 80px;
     flex: 1;
 }
 
-.nav-section * {
+.nav-drop-down {
+    display: none; /* Starts off hidden */
+    flex-direction: column;
+}
+
+.nav-drop-down * {
+    margin-left: 3%;
+    margin-bottom: 16px;
+}
+
+.nav-list * {
     margin: 0 3%;
 }
 
