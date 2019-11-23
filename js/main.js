@@ -22,12 +22,12 @@ dropDownButton.onclick = function () {
         dropDownImage.classList.add('rotated');
         dropDown.style.display = 'block';
         setTimeout(function () {
-            dropDown.style.opacity = '1';
+            dropDown.classList.add('visible');
             shiftItems(false)
         }, 5);
         topMenu.style.height = topMenu.clientHeight + dropDown.clientHeight + 'px';
     } else {
-        dropDown.style.opacity = '0';
+        dropDown.classList.remove('visible');
         shiftItems(true);
         topMenu.style.height = '80px';
         dropDownImage.classList.remove('rotated')

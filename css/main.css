@@ -61,6 +61,10 @@ nav, .nav-list {
     transition: opacity 0.5s;
 }
 
+.visible {
+    opacity: 1 !important;
+}
+
 #drop-down * {
     display: block;
     box-sizing: border-box;
