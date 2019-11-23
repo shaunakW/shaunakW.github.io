@@ -1,9 +1,10 @@
-import * as config from "./config.js";
+const clientId = "8866edb7-8c56-48d6-a7cc-223fd09280ea";
+const tenantId = "b0e91a46-079b-4108-bd1a-e246d5d2f971";
 
 const msalConfig = {
     auth: {
-        clientId: config.clientId,
-        authority: "https://login.microsoftonline.com/" + config.tenantId,
+        clientId: clientId,
+        authority: "https://login.microsoftonline.com/" + tenantId,
         redirectUri: window.location.href
     }
 };
