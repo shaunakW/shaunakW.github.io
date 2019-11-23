@@ -78,6 +78,12 @@ nav, .nav-list {
     height: 16px;
     width: 16px;
     transition: transform 0.5s cubic-bezier(.77,0,.18,1);
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(.77,0,.18,1);
+}
+
+.rotated {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
 }
 
 .nav-list * {

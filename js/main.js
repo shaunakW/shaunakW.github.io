@@ -19,20 +19,18 @@ dropDown.addEventListener('transitionend', function() {
 dropDownButton.onclick = function () {
     navExpanded = !navExpanded;
     if (navExpanded) {
-        dropDownImage.style.transform = 'rotate(90deg)';
+        dropDownImage.classList.add('rotated');
         dropDown.style.display = 'block';
         setTimeout(function () {
             dropDown.style.opacity = '1';
-            for (let i = 0; i < dropDownItems.length; i++) {
-                dropDownItems[i].style.transform = 'translateY(0px)';
-            }
+            shiftItems(false)
         }, 5);
         topMenu.style.height = topMenu.clientHeight + dropDown.clientHeight + 'px';
     } else {
         dropDown.style.opacity = '0';
         shiftItems(true);
         topMenu.style.height = '80px';
-        dropDownImage.style.transform = 'rotate(0deg)';
+        dropDownImage.classList.remove('rotated')
     }
 };
 
