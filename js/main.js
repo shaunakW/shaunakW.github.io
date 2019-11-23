@@ -6,6 +6,9 @@ const topMenu = document.getElementById('top-menu');
 const dropDown = document.getElementById('drop-down');
 const dropDownButton = document.getElementById('nav-drop-down'); // Dropdown button in nav bar
 const dropDownImage = document.getElementById('drop-down-image');
+const dropDownItems = dropDown.children;
+
+shiftItems(true);
 
 dropDown.addEventListener('transitionend', function() {
     if (!navExpanded) {
@@ -20,11 +23,21 @@ dropDownButton.onclick = function () {
         dropDown.style.display = 'flex';
         setTimeout(function () {
             dropDown.style.opacity = '1';
+            for (let i = 0; i < dropDownItems.length; i++) {
+                dropDownItems[i].style.transform = 'translateY(0px)';
+            }
         }, 5);
         topMenu.style.height = topMenu.clientHeight + dropDown.clientHeight + 'px';
     } else {
         dropDown.style.opacity = '0';
+        shiftItems(true);
         topMenu.style.height = '80px';
         dropDownImage.style.transform = 'rotate(0deg)';
     }
 };
+
+function shiftItems(shift) {
+    for (let i = 0; i < dropDownItems.length; i++) {
+        dropDownItems[i].style.transform = shift ? `translateY(-${20 * (i + 1)}px)` : 'translateY(0px)';
+    }
+}
