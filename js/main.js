@@ -17,8 +17,10 @@ dropDownArea.onclick = function () {
     navExpanded = !navExpanded;
     if (navExpanded) {
         dropDownImage.style.transform = 'rotate(90deg)';
-        dropDown.style.opacity = '1';
         dropDown.style.display = 'flex';
+        setTimeout(function () {
+            dropDown.style.opacity = '1';
+        }, 5);
         topMenu.style.height = topMenu.clientHeight + dropDown.clientHeight + 'px';
     } else {
         dropDown.style.opacity = '0';
