@@ -73,9 +73,10 @@ nav, #drop-down, .nav-list {
 
 #nav-drop-down {
     display: inline-block;
+    white-space: nowrap;
 }
 
-#nav-drop-down {
+#drop-down-image {
     height: 18px;
     margin-right: 5px;
     transition: 0.5s cubic-bezier(.68,-0.55,.27,1.55);
