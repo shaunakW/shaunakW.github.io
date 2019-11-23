@@ -1,10 +1,10 @@
-const clientId = "8866edb7-8c56-48d6-a7cc-223fd09280ea";
-const tenantId = "b0e91a46-079b-4108-bd1a-e246d5d2f971";
+const clientId = '8866edb7-8c56-48d6-a7cc-223fd09280ea';
+const tenantId = 'b0e91a46-079b-4108-bd1a-e246d5d2f971';
 
 const msalConfig = {
     auth: {
         clientId: clientId,
-        authority: "https://login.microsoftonline.com/" + tenantId,
+        authority: 'https://login.microsoftonline.com/' + tenantId,
         redirectUri: window.location.href
     }
 };
@@ -12,13 +12,13 @@ const msalConfig = {
 const msal = new Msal.UserAgentApplication(msalConfig);
 
 const request = {
-    scopes: ["calendars.read"]
+    scopes: ['calendars.read']
 };
 
 msal.acquireTokenSilent(request).then(function (response) {
     authButton.innerHTML = 'Logout';
     authButton.onclick = () => msal.logout();
-    getClasses(response["accessToken"]);
+    getClasses(response.accessToken);
 }).catch(function () {
     signIn();
 });
@@ -31,7 +31,7 @@ function signIn() {
     msal.acquireTokenPopup(request).then(function (response) {
         authButton.innerHTML = 'Logout';
         authButton.onclick = () => msal.logout();
-        getClasses(response["accessToken"]);
+        getClasses(response.accessToken);
     }).catch(function (error) {
         alert(error);
     });
@@ -48,34 +48,34 @@ function getClasses(accessToken) {
     const todayParams = {
         startDateTime: startDate.toISOString(),
         endDateTime: endDate.toISOString(),
-        $select: "subject,start,end,isAllDay",
-        $filter: "categories/any(c:c eq 'BCP Schedule')"
+        $select: 'subject,start,end,isAllDay',
+        $filter: 'categories/any(c:c eq \'BCP Schedule\')'
     };
-    graphApi("/me/calendarView", todayParams, accessToken, function (json) {
-        const order = document.getElementById("today-order");
-        const classes = document.getElementById("today");
+    graphApi('/me/calendarView', todayParams, accessToken, function (json) {
+        const order = document.getElementById('today-order');
+        const classes = document.getElementById('today');
         if (json.value.length > 0) {
             for (const i of json.value) {
                 if (i.isAllDay) {
-                    order.innerHTML = "Today: " + i.subject;
+                    order.innerHTML = 'Today: ' + i.subject;
                 } else {
                     classes.appendChild(tableRow(i.subject, new Date(i.start.dateTime), new Date(i.end.dateTime)));
                 }
             }
         } else {
-            classes.innerHTML = "Hooray!! No classes today!"
+            order.innerHTML = 'Hooray!! No classes today!'
         }
     });
 
     const nextParams = {
-        $select: "subject,start,end,isAllDay",
+        $select: 'subject,start,end,isAllDay',
         $filter: `categories/any(c:c eq 'BCP Schedule') and start/dateTime ge '${nextDay.getFullYear()}-${nextDay.getMonth() + 1}-${nextDay.getDate()}'`,
-        $orderby: "end/dateTime",
+        $orderby: 'end/dateTime',
         $top: 7
     };
-    graphApi("/me/events", nextParams, accessToken, function(json) {
-        const order = document.getElementById("next-order");
-        const classes = document.getElementById("next");
+    graphApi('/me/events', nextParams, accessToken, function(json) {
+        const order = document.getElementById('next-order');
+        const classes = document.getElementById('next');
         for (const i of json.value) {
             const start = new Date(i.start.dateTime);
             const end = new Date(i.end.dateTime);
@@ -90,8 +90,8 @@ function getClasses(accessToken) {
 }
 
 function tableRow(subj, start, end) {
-    const subject = subj.split(" - P");
-    const tr = document.createElement("tr");
+    const subject = subj.split(' - P');
+    const tr = document.createElement('tr');
 
     const startTime = hourMinute(start);
     const endTime = hourMinute(end);
@@ -114,15 +114,15 @@ function graphApi(endpoint, params, accessToken, completion) {
             document.getElementById('logout-separator').hidden = false;
         }
     };
-    xhttp.open("GET", url, true);
-    xhttp.setRequestHeader("Authorization", `Bearer ${accessToken}`);
-    xhttp.setRequestHeader("Prefer", 'outlook.timezone="America/Los_Angeles"');
+    xhttp.open('GET', url, true);
+    xhttp.setRequestHeader('Authorization', `Bearer ${accessToken}`);
+    xhttp.setRequestHeader('Prefer', 'outlook.timezone="America/Los_Angeles"');
     xhttp.send();
 }
 
 function hourMinute(date) {
     const hh = (date.getHours() - 1) % 12 + 1;
     let mm = date.getMinutes();
-    if (mm < 10) mm = "0" + mm;
+    if (mm < 10) mm = '0' + mm;
     return `${hh}:${mm}`;
 }
