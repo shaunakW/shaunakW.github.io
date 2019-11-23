@@ -13,11 +13,11 @@ a {
 }
 
 a:link {
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 
 a:hover {
-    transition: 0.3s;
+    transition: color 0.3s;
     color: #4eb2f5;
 }
 
@@ -29,7 +29,7 @@ a:hover {
     top: 0;
     background-color: #3498db;
     font-weight: 500;
-    transition: 0.5s cubic-bezier(.65,.05,.36,1);
+    transition: height 0.5s cubic-bezier(.65,.05,.36,1);
 }
 
 #top-menu * {
@@ -63,7 +63,7 @@ nav, #drop-down, .nav-list {
     display: none;
     opacity: 0;
     flex-direction: column;
-    transition: 0.5s;
+    transition: opacity 0.5s;
 }
 
 #drop-down * {
@@ -80,7 +80,7 @@ nav, #drop-down, .nav-list {
 #drop-down-image {
     height: 18px;
     margin-right: 5px;
-    transition: 0.5s cubic-bezier(.77,0,.18,1);
+    transition: transform 0.5s cubic-bezier(.77,0,.18,1);
 }
 
 .nav-list * {
