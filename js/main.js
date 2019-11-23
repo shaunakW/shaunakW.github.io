@@ -3,7 +3,7 @@
 let navExpanded = false;
 
 const topMenu = document.getElementById('top-menu');
-const dropDown = document.getElementById('drop-down-area');
+const dropDown = document.getElementById('drop-down');
 const dropDownButton = document.getElementById('nav-drop-down'); // Dropdown button in nav bar
 const dropDownImage = document.getElementById('drop-down-image');
 

@@ -50,7 +50,7 @@ nav span, nav a {
     line-height: 80px;
 }
 
-nav, #nav-drop-down, .nav-list {
+nav, #drop-down, .nav-list {
     display: flex;
 }
 
@@ -59,14 +59,14 @@ nav, #nav-drop-down, .nav-list {
     flex: 1;
 }
 
-#drop-down-area {
+#drop-down {
     display: none;
     opacity: 0;
     flex-direction: column;
     transition: 0.5s;
 }
 
-#drop-down-area * {
+#drop-down * {
     margin-left: 3%;
     margin-bottom: 16px;
 }
