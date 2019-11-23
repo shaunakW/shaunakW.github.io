@@ -20,7 +20,7 @@ dropDownButton.onclick = function () {
     navExpanded = !navExpanded;
     if (navExpanded) {
         dropDownImage.style.transform = 'rotate(90deg)';
-        dropDown.style.display = 'flex';
+        dropDown.style.display = 'block';
         setTimeout(function () {
             dropDown.style.opacity = '1';
             for (let i = 0; i < dropDownItems.length; i++) {
