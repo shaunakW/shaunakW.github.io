@@ -17,7 +17,7 @@ dropDownButton.onclick = function () {
             dropDown.style.opacity = 1;
             anime({
                 targets: '#drop-down *',
-                translateY: [(el, i) => -20 * (i + 1), 0],
+                translateY: [(el, i) => -10 * (i + 2), 0],
                 delay: (el, i) => 75 * i
             });
         }, 0);

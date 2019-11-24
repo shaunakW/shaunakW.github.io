@@ -58,13 +58,14 @@ nav, .nav-list {
     display: none;
     opacity: 0;
     transition: opacity 0.75s;
+    transform: translateY(-8px);
 }
 
 #drop-down * {
     display: block;
     box-sizing: border-box;
-    padding-left: 3%;
-    padding-bottom: 16px;
+    width: max-content;
+    padding: 8px 3%;
 }
 
 #nav-drop-down {
