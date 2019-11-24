@@ -21,7 +21,8 @@ msal.acquireTokenSilent(request).then(function (response) {
     msal.acquireTokenPopup(request).then(function (response) {
         getClasses(response.accessToken);
     }).catch(function (error) {
-        alert(error);
+        console.log(error);
+        alert('There was an error trying to log you in. You might need to enable pop-ups for this website then reload. If the error still persists, check the console.');
     });
 });
 
