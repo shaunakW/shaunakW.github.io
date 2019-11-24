@@ -74,7 +74,7 @@ function getClasses(accessToken) {
                 classes.appendChild(tableRow(i.subject, start, end));
             }
         }
-    })
+    });
 }
 
 function tableRow(subj, start, end) {
@@ -88,6 +88,8 @@ function tableRow(subj, start, end) {
     return tr;
 }
 
+let ready = false;
+
 function graphApi(endpoint, params, accessToken, completion) {
     let url = `https://graph.microsoft.com/v1.0${endpoint}?`;
     for (const p in params) {
@@ -99,6 +101,11 @@ function graphApi(endpoint, params, accessToken, completion) {
         if (this.readyState === 4 && this.status === 200) {
             const json = JSON.parse(xhttp.responseText);
             completion(json);
+            if (ready) {
+                show()
+            } else {
+                ready = true
+            }
         }
     };
     xhttp.open('GET', url, true);
@@ -114,6 +121,25 @@ function hourMinute(date) {
     return `${hh}:${mm}`;
 }
 
-function show() {
+const topHr = document.getElementById('top-hr');
+const bottomHr = document.getElementById('bottom-hr');
 
+function show() {
+    const offset = topHr.getBoundingClientRect().top - bottomHr.getBoundingClientRect().top;
+    anime({
+        targets: '#bottom-hr',
+        translateY: [offset, 0],
+        delay: 500,
+        duration: 2000,
+        begin: () => {
+            bottomHr.style.opacity = 1;
+            setTimeout(() => {
+                anime({
+                    targets: '#classes',
+                    opacity: 1,
+                    easing: 'linear'
+                })
+            }, 1200);
+        },
+    });
 }
