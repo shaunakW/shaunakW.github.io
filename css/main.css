@@ -106,6 +106,7 @@ nav, .nav-list {
 #main {
     padding: 80px 20px 30px 20px;
     background-color: #d7dde1;
+    height: 100vh;
 }
 
 /* Footer */
