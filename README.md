@@ -1,6 +1,5 @@
 # shaunakW.github.io
 This is my homepage, where I plan to list all my projects and other stuff, possible even a bio.
-Right now though it is still in early development.
 
 ## Projects inside this site
 
