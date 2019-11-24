@@ -1,19 +1,19 @@
 #main {
-    background-color: #bdc3c7;
     padding: 0;
+    height: 100vh;
 }
 
 #top-menu, #footer {
-    z-index: 1;
+    z-index: 2;
 }
 
 .white-keys {
-    overflow: auto;
+    height: 100%;
 }
 
 .white-keys > * {
     float: left;
-    height: calc(100vh - 30px);
+    height: calc(85vh - 30px);
     width: calc(100% / 7 - 0.5%);
     margin: 0 0.25%;
     background-color: #ecf0f1;
@@ -25,12 +25,15 @@
     height: 100%;
     width: 100%;
     padding-left: calc(100% / 14);
+    pointer-events: none;
 }
 
 .black-keys > * {
     float: left;
-    height: 65vh;
+    height: 55vh;
     width: calc(100% * 2 / 21);
     margin: 0 calc(100% / 42);
     background-color: #000000;
+    pointer-events: auto;
+    z-index: 1;
 }
