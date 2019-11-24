@@ -1,20 +1,19 @@
 #main {
     background-color: #bdc3c7;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
 }
 
 #top-menu, #footer {
     z-index: 1;
 }
 
-.white-keys, .black-keys {
+.white-keys {
     overflow: auto;
 }
 
-.white-key {
+.white-keys > * {
     float: left;
-    height: calc(100vh - 110px);
+    height: calc(100vh - 30px);
     width: calc(100% / 7 - 0.5%);
     margin: 0 0.25%;
     background-color: #ecf0f1;
@@ -22,15 +21,15 @@
 
 .black-keys {
     position: fixed;
-    top: 80px;
-    height: 55vh;
+    top: 0;
+    height: 100%;
     width: 100%;
     padding-left: calc(100% / 14);
 }
 
-.black-key {
+.black-keys > * {
     float: left;
-    height: 100%;
+    height: 65vh;
     width: calc(100% * 2 / 21);
     margin: 0 calc(100% / 42);
     background-color: #000000;
