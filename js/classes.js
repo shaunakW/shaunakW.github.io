@@ -16,26 +16,14 @@ const request = {
 };
 
 msal.acquireTokenSilent(request).then(function (response) {
-    authButton.innerHTML = 'Logout';
-    authButton.onclick = () => msal.logout();
     getClasses(response.accessToken);
 }).catch(function () {
-    signIn();
-});
-
-const authButton = document.getElementById('sign-in-out');
-
-authButton.onclick = signIn;
-
-function signIn() {
     msal.acquireTokenPopup(request).then(function (response) {
-        authButton.innerHTML = 'Logout';
-        authButton.onclick = () => msal.logout();
         getClasses(response.accessToken);
     }).catch(function (error) {
         alert(error);
     });
-}
+});
 
 const startDate = new Date();
 startDate.setHours(8, 15, 0, 0);
@@ -111,7 +99,6 @@ function graphApi(endpoint, params, accessToken, completion) {
         if (this.readyState === 4 && this.status === 200) {
             const json = JSON.parse(xhttp.responseText);
             completion(json);
-            document.getElementById('logout-separator').hidden = false;
         }
     };
     xhttp.open('GET', url, true);
@@ -125,4 +112,8 @@ function hourMinute(date) {
     let mm = date.getMinutes();
     if (mm < 10) mm = '0' + mm;
     return `${hh}:${mm}`;
+}
+
+function show() {
+
 }
