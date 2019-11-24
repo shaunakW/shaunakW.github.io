@@ -5,37 +5,45 @@ let navExpanded = false;
 const topMenu = document.getElementById('top-menu');
 const dropDown = document.getElementById('drop-down');
 const dropDownButton = document.getElementById('nav-drop-down'); // Dropdown button in nav bar
-const dropDownImage = document.getElementById('drop-down-image');
-const dropDownItems = dropDown.children;
-
-shiftItems(true);
-
-dropDown.addEventListener('transitionend', function() {
-    if (!navExpanded) {
-        dropDown.style.display = 'none';
-    }
-});
 
 dropDownButton.onclick = function () {
     navExpanded = !navExpanded;
     if (navExpanded) {
-        dropDownImage.classList.add('rotated');
+        anime({
+            targets: '#drop-down-image',
+            rotate: 90
+        });
         dropDown.style.display = 'block';
         setTimeout(function () {
-            dropDown.classList.add('visible');
-            shiftItems(false)
-        }, 5);
-        topMenu.style.height = topMenu.clientHeight + dropDown.clientHeight + 'px';
+            dropDown.style.opacity = 1;
+            anime({
+                targets: '#drop-down *',
+                translateY: [(el, i) => -20 * (i + 1), 0],
+                delay: (el, i) => 75 * i
+            });
+        }, 0);
+        anime({
+            targets: '#top-menu',
+            height: '+=' + dropDown.clientHeight,
+            duration: 1500
+        });
     } else {
-        dropDown.classList.remove('visible');
-        shiftItems(true);
-        topMenu.style.height = '80px';
-        dropDownImage.classList.remove('rotated')
+        dropDown.style.opacity = 0;
+        anime({
+            targets: '#drop-down *',
+            translateY: (el, i) => -15 * (i + 2),
+            duration: 500,
+            easing: 'easeOutSine',
+            complete: () => dropDown.style.display = 'none'
+        });
+        anime({
+            targets: '#top-menu',
+            height: '-=' + dropDown.clientHeight,
+            duration: 1500
+        });
+        anime({
+            targets: '#drop-down-image',
+            rotate: 0
+        });
     }
 };
-
-function shiftItems(shift) {
-    for (let i = 0; i < dropDownItems.length; i++) {
-        dropDownItems[i].style.transform = shift ? `translateY(-${20 * (i + 1)}px)` : 'translateY(0px)';
-    }
-}
