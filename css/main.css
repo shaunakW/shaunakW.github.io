@@ -33,14 +33,14 @@ a:hover {
 }
 
 #top-menu a {
-    opacity: 70%;
+    opacity: 0.7;
 }
 
 #top-menu a:hover {
-    opacity: 100%;
+    opacity: 1;
 }
 
-nav span, nav a {
+nav :not(div) {
     margin: 0;
     line-height: 80px;
 }
@@ -65,12 +65,17 @@ nav, .nav-list {
     box-sizing: border-box;
     padding-left: 3%;
     padding-bottom: 16px;
-    transition: opacity 0.3s;
 }
 
 #nav-drop-down {
     display: inline-block;
     white-space: nowrap;
+    transition: transform 0.3s;
+}
+
+#nav-drop-down:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 #drop-down-image {
