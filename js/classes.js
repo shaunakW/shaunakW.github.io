@@ -132,15 +132,13 @@ function show() {
         translateY: [offset, 0],
         delay: 500,
         duration: 2000,
-        begin: () => {
-            bottomHr.style.opacity = 1;
-            setTimeout(() => {
-                anime({
-                    targets: '#classes',
-                    opacity: 1,
-                    easing: 'linear'
-                })
-            }, 1200);
-        },
+        begin: () => bottomHr.style.opacity = 1,
     });
+    setTimeout(() => {
+        anime({
+            targets: '#classes',
+            opacity: 1,
+            easing: 'linear'
+        })
+    }, 1200);
 }
