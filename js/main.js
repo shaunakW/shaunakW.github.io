@@ -2,7 +2,6 @@
 
 let navExpanded = false;
 
-const topMenu = document.getElementById('top-menu');
 const dropDown = document.getElementById('drop-down');
 const dropDownButton = document.getElementById('nav-drop-down'); // Dropdown button in nav bar
 
@@ -24,7 +23,7 @@ dropDownButton.onclick = function () {
         }, 0);
         anime({
             targets: '#top-menu',
-            height: '+=' + dropDown.clientHeight,
+            height: [80, 80 + dropDown.clientHeight],
             duration: 1500
         });
     } else {
@@ -38,7 +37,7 @@ dropDownButton.onclick = function () {
         });
         anime({
             targets: '#top-menu',
-            height: '-=' + dropDown.clientHeight,
+            height: [80 + dropDown.clientHeight, 80],
             duration: 1500
         });
         anime({
