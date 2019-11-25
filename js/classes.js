@@ -122,23 +122,20 @@ function hourMinute(date) {
     return `${hh}:${mm}`;
 }
 
-const topHr = document.getElementById('top-hr');
-const bottomHr = document.getElementById('bottom-hr');
+const hr1 = document.getElementById('hr-1');
+const hr2 = document.getElementById('hr-2');
 
 function show() {
-    const offset = topHr.getBoundingClientRect().top - bottomHr.getBoundingClientRect().top;
+    const offset = hr1.getBoundingClientRect().top - hr2.getBoundingClientRect().top;
     anime({
-        targets: '#bottom-hr',
+        targets: '#hr-2, #classes',
         translateY: [offset, 0],
         delay: 500,
         duration: 2000,
-        begin: () => bottomHr.style.opacity = 1,
+        easing: 'easeOutBounce',
+        begin: () => {
+            document.getElementById('classes').style.opacity = 1;
+            hr2.style.opacity = 1
+        },
     });
-    setTimeout(() => {
-        anime({
-            targets: '#classes',
-            opacity: 1,
-            easing: 'linear'
-        })
-    }, 1200);
 }
