@@ -25,6 +25,7 @@ a:hover {
     top: 0;
     background-color: #3498db;
     font-weight: 500;
+    z-index: 1;
 }
 
 #top-menu * {
@@ -118,4 +119,5 @@ nav, .nav-list {
     font-size: 14px;
     line-height: 30px;
     background-color: #bdc3c7;
+    z-index: 1;
 }
