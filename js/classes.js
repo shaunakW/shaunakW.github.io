@@ -103,7 +103,7 @@ function graphApi(endpoint, params, accessToken, completion) {
             const json = JSON.parse(xhttp.responseText);
             completion(json);
             if (ready) {
-                show()
+                showClasses()
             } else {
                 ready = true
             }
@@ -122,20 +122,28 @@ function hourMinute(date) {
     return `${hh}:${mm}`;
 }
 
-const hr1 = document.getElementById('hr-1');
-const hr2 = document.getElementById('hr-2');
-
-function show() {
-    const offset = hr1.getBoundingClientRect().top - hr2.getBoundingClientRect().top;
+function showClasses() {
     anime({
-        targets: '#hr-2, #classes',
-        translateY: [offset, 0],
+        targets: '#classes > *',
+        translateY: [hr(1).getBoundingClientRect().top - hr(2).getBoundingClientRect().top, 0],
         delay: 500,
         duration: 2000,
         easing: 'easeOutBounce',
-        begin: () => {
-            document.getElementById('classes').style.opacity = 1;
-            hr2.style.opacity = 1
-        },
+        begin: () => document.getElementById('classes').style.opacity = 1,
+        complete: showHomework
     });
+}
+
+function showHomework() {
+    anime({
+        targets: '#homework > *',
+        translateY: [hr(2).getBoundingClientRect().top - hr(4).getBoundingClientRect().top, 0],
+        duration: 2000,
+        easing: 'easeOutBounce',
+        begin: () => document.getElementById('homework').style.opacity = 1
+    })
+}
+
+function hr(n) {
+    return document.getElementById('hr-' + n);
 }
