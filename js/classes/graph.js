@@ -41,12 +41,16 @@ function getClasses(accessToken) {
         for (const i of json.value) {
             const start = new Date(i.start.dateTime);
             const end = new Date(i.end.dateTime);
+            const due = new Date(end.valueOf());
+            due.setDate(due.getDate() - 1);
+            due.setHours(23, 59, 59, 999);
+
             if (i.isAllDay) {
                 order.innerHTML = `Next Class Day (${start.getMonth() + 1}-${start.getDate()}): ${i.subject}`;
                 break;
             } else {
                 classes.appendChild(classRow(i.subject, start, end));
-                homework.appendChild(hwRow(i.subject))
+                homework.appendChild(hwRow(i.subject, due))
             }
         }
     });
@@ -89,11 +93,17 @@ function classRow(subj, start, end) {
     return tr;
 }
 
-function hwRow(subj) {
+function hwRow(subj, due) {
     const subject = subj.split(' - P');
     const li = document.createElement('li');
 
-    li.innerHTML = `Period ${subject[1]} - ${subject[0]}`;
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.onchange = () => setCookie(subject[1], input.checked, due);
+    input.checked = getCookie(subject[1]) === 'true';
+
+    li.innerHTML = `Period ${subject[1]} - ${subject[0]}  `;
+    li.appendChild(input);
     return li;
 }
 
