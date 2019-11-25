@@ -14,11 +14,16 @@ dropDownButton.onclick = function () {
         });
         dropDown.style.display = 'block';
         setTimeout(function () {
-            dropDown.style.opacity = 1;
+            anime({
+                targets: '#drop-down',
+                opacity: 1,
+                duration: 600,
+                easing: 'linear'
+            });
             anime({
                 targets: '#drop-down *',
-                translateY: [(el, i) => -10 * (i + 2), 0],
-                delay: (el, i) => 75 * i
+                translateY: [anime.stagger(-10, {start: -20}), 0],
+                delay: anime.stagger(75)
             });
         }, 0);
         anime({
@@ -27,12 +32,17 @@ dropDownButton.onclick = function () {
             duration: 1500
         });
     } else {
-        dropDown.style.opacity = 0;
+        anime({
+            targets: '#drop-down',
+            opacity: 0,
+            duration: 200,
+            easing: 'linear'
+        });
         anime({
             targets: '#drop-down *',
-            translateY: (el, i) => -15 * (i + 2),
+            translateY: anime.stagger(-10, {start: -50}),
             duration: 500,
-            easing: 'easeOutSine',
+            easing: 'easeOutCubic',
             complete: () => dropDown.style.display = 'none'
         });
         anime({
