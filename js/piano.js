@@ -16,6 +16,9 @@ anime({
 function readyKeys() {
     document.querySelectorAll('.white-key, .black-key').forEach((key, i) => {
         key.onclick = () => {
+            // Audio obtained from http://www.telacommunications.com/nutshell/music/sounds-mp3
+            const audio = new Audio(`/assets/audio/piano${i}.mp3`);
+            audio.play();
             anime({
                 targets: key,
                 translateY: [0, 25],
