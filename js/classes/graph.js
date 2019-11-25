@@ -1,31 +1,3 @@
-const clientId = '8866edb7-8c56-48d6-a7cc-223fd09280ea';
-const tenantId = 'b0e91a46-079b-4108-bd1a-e246d5d2f971';
-
-const msalConfig = {
-    auth: {
-        clientId: clientId,
-        authority: 'https://login.microsoftonline.com/' + tenantId,
-        redirectUri: window.location.href
-    }
-};
-
-const msal = new Msal.UserAgentApplication(msalConfig);
-
-const request = {
-    scopes: ['calendars.read']
-};
-
-msal.acquireTokenSilent(request).then(function (response) {
-    getClasses(response.accessToken);
-}).catch(function () {
-    msal.acquireTokenPopup(request).then(function (response) {
-        getClasses(response.accessToken);
-    }).catch(function (error) {
-        console.log(error);
-        alert('There was an error trying to log you in. You might need to enable pop-ups for this website then reload. If the error still persists, check the console.');
-    });
-});
-
 const startDate = new Date();
 startDate.setHours(8, 15, 0, 0);
 const endDate = new Date(startDate.valueOf());
@@ -48,7 +20,7 @@ function getClasses(accessToken) {
                 if (i.isAllDay) {
                     order.innerHTML = 'Today: ' + i.subject;
                 } else {
-                    classes.appendChild(tableRow(i.subject, new Date(i.start.dateTime), new Date(i.end.dateTime)));
+                    classes.appendChild(classRow(i.subject, new Date(i.start.dateTime), new Date(i.end.dateTime)));
                 }
             }
         } else {
@@ -65,6 +37,7 @@ function getClasses(accessToken) {
     graphApi('/me/events', nextParams, accessToken, function(json) {
         const order = document.getElementById('next-order');
         const classes = document.getElementById('next');
+        const homework = document.getElementById('hw-list');
         for (const i of json.value) {
             const start = new Date(i.start.dateTime);
             const end = new Date(i.end.dateTime);
@@ -72,21 +45,11 @@ function getClasses(accessToken) {
                 order.innerHTML = `Next Class Day (${start.getMonth() + 1}-${start.getDate()}): ${i.subject}`;
                 break;
             } else {
-                classes.appendChild(tableRow(i.subject, start, end));
+                classes.appendChild(classRow(i.subject, start, end));
+                homework.appendChild(hwRow(i.subject))
             }
         }
     });
-}
-
-function tableRow(subj, start, end) {
-    const subject = subj.split(' - P');
-    const tr = document.createElement('tr');
-
-    const startTime = hourMinute(start);
-    const endTime = hourMinute(end);
-
-    tr.innerHTML = `<td>Period ${subject[1]} - ${subject[0]}</td><td>${startTime} - ${endTime}</td>`;
-    return tr;
 }
 
 let ready = false;
@@ -115,35 +78,28 @@ function graphApi(endpoint, params, accessToken, completion) {
     xhttp.send();
 }
 
+function classRow(subj, start, end) {
+    const subject = subj.split(' - P');
+    const tr = document.createElement('tr');
+
+    const startTime = hourMinute(start);
+    const endTime = hourMinute(end);
+
+    tr.innerHTML = `<td>Period ${subject[1]} - ${subject[0]}</td><td>${startTime} - ${endTime}</td>`;
+    return tr;
+}
+
+function hwRow(subj) {
+    const subject = subj.split(' - P');
+    const li = document.createElement('li');
+
+    li.innerHTML = `Period ${subject[1]} - ${subject[0]}`;
+    return li;
+}
+
 function hourMinute(date) {
     const hh = (date.getHours() - 1) % 12 + 1;
     let mm = date.getMinutes();
     if (mm < 10) mm = '0' + mm;
     return `${hh}:${mm}`;
-}
-
-function showClasses() {
-    anime({
-        targets: '#classes > *',
-        translateY: [hr(1).getBoundingClientRect().top - hr(2).getBoundingClientRect().top, 0],
-        delay: 500,
-        duration: 2000,
-        easing: 'easeOutBounce',
-        begin: () => document.getElementById('classes').style.opacity = 1,
-        complete: showHomework
-    });
-}
-
-function showHomework() {
-    anime({
-        targets: '#homework > *',
-        translateY: [hr(2).getBoundingClientRect().top - hr(4).getBoundingClientRect().top, 0],
-        duration: 2000,
-        easing: 'easeOutBounce',
-        begin: () => document.getElementById('homework').style.opacity = 1
-    })
-}
-
-function hr(n) {
-    return document.getElementById('hr-' + n);
 }
