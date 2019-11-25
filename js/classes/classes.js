@@ -18,7 +18,7 @@ const request = {
 msal.acquireTokenSilent(request).then(function (response) {
     getClasses(response.accessToken);
 }).catch(function (error) {
-    console.log(error)
+    console.log(error);
     msal.acquireTokenPopup(request).then(function (response) {
         getClasses(response.accessToken);
     }).catch(function (error) {
@@ -31,7 +31,7 @@ function showClasses() {
     anime({
         targets: '#classes > *',
         translateY: [hr(1).getBoundingClientRect().top - hr(2).getBoundingClientRect().top, 0],
-        delay: 500,
+        delay: 200,
         duration: 2000,
         easing: 'easeOutBounce',
         begin: () => document.getElementById('classes').style.opacity = 1,
