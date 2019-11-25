@@ -42,8 +42,7 @@ function getClasses(accessToken) {
             const start = new Date(i.start.dateTime);
             const end = new Date(i.end.dateTime);
             const due = new Date(end.valueOf());
-            due.setDate(due.getDate() - 1);
-            due.setHours(23, 59, 59, 999);
+            due.setHours(0, 0, 0, 0);
 
             if (i.isAllDay) {
                 order.innerHTML = `Next Class Day (${start.getMonth() + 1}-${start.getDate()}): ${i.subject}`;

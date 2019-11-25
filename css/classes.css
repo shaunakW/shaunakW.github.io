@@ -34,3 +34,7 @@ table {
 td, li {
     padding: 5px 0;
 }
+
+#main > *:last-of-type {
+    margin-bottom: 10px;
+}
