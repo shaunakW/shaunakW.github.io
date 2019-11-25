@@ -7,10 +7,6 @@
     z-index: 2;
 }
 
-.white-keys {
-    height: 100%;
-}
-
 .white-keys > * {
     float: left;
     height: calc(85vh - 30px);
