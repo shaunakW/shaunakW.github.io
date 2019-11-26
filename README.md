@@ -26,3 +26,4 @@ You can create an account, edit your account, make, update, and delete posts, re
 ### [MSAL (Microsoft Authentication Library)](https://github.com/AzureAD/microsoft-authentication-library-for-js)
 ### [Anime.js](https://animejs.com/)
 ### [Granim.js](https://sarcadass.github.io/granim.js/)
+### [Font Awesome](https://fontawesome.com/)
