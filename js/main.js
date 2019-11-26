@@ -12,7 +12,7 @@ dropDownButton.onclick = function () {
             targets: '#drop-down-image',
             rotate: 90
         });
-        dropDown.style.display = 'block';
+        dropDown.style.pointerEvents = 'auto';
         setTimeout(function () {
             anime({
                 targets: '#drop-down',
@@ -33,6 +33,7 @@ dropDownButton.onclick = function () {
         //     duration: 1500
         // });
     } else {
+        dropDown.style.pointerEvents = 'none';
         anime({
             targets: '#drop-down',
             opacity: 0,
@@ -43,8 +44,7 @@ dropDownButton.onclick = function () {
             targets: '#drop-down *',
             translateY: anime.stagger(-10, {start: -50}),
             duration: 450,
-            easing: 'easeOutCubic',
-            complete: () => dropDown.style.display = 'none'
+            easing: 'easeOutCubic'
         });
         // anime({
         //     targets: '#top-gradient',

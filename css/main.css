@@ -97,7 +97,7 @@ nav, .nav-list {
 
 /* Drop down */
 #drop-down {
-    display: none;
+    pointer-events: none;
     opacity: 0;
     transform: translateY(-8px);
 }
