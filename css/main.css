@@ -23,15 +23,12 @@ a:hover {
     width: 100%;
     height: 80px;
     position: fixed;
+    font-weight: 500;
+    z-index: 1;
 }
 
 #top-gradient {
     transition: height 0.5s cubic-bezier(.15,.98,.33,1.29);
-}
-
-#nav-bar {
-    font-weight: 500;
-    z-index: 1;
 }
 
 #nav-bar * {
