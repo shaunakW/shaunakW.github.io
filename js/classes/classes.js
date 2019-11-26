@@ -30,7 +30,7 @@ msal.acquireTokenSilent(request).then(function (response) {
 function showClasses() {
     anime({
         targets: '#classes > *',
-        translateY: [hr(1).getBoundingClientRect().top - hr(2).getBoundingClientRect().top, 0],
+        translateY: [-document.getElementById('classes').clientHeight, 0],
         delay: 200,
         duration: 2000,
         easing: 'easeOutBounce',
@@ -42,13 +42,9 @@ function showClasses() {
 function showHomework() {
     anime({
         targets: '#homework > *',
-        translateY: [hr(2).getBoundingClientRect().top - hr(4).getBoundingClientRect().top, 0],
+        translateY: [-document.getElementById('homework').clientHeight, 0],
         duration: 2000,
         easing: 'easeOutBounce',
         begin: () => document.getElementById('homework').style.opacity = 1
     })
-}
-
-function hr(n) {
-    return document.getElementById('hr-' + n);
 }
