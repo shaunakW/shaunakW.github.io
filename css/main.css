@@ -39,6 +39,10 @@ a:hover {
     color: #ecf0f1;
 }
 
+#nav-bar i {
+    font-size: 30px;
+}
+
 #nav-bar a {
     opacity: 0.7;
 }
@@ -47,18 +51,28 @@ a:hover {
     opacity: 1;
 }
 
-nav :not(div) {
-    margin: 0;
-    line-height: 80px;
-}
-
-nav, .nav-list {
+nav, .nav-section {
     display: flex;
+    align-items: center;
 }
 
 .nav-section {
     height: 80px;
     flex: 1;
+}
+
+.nav-section > * {
+    margin: 0 3%;
+}
+
+#nav-left {
+    padding-left: 1.5%;
+    justify-content: flex-start;
+}
+
+#nav-right {
+    padding-right: 1.5%;
+    justify-content: flex-end;
 }
 
 #nav-drop-down {
@@ -78,20 +92,6 @@ nav, .nav-list {
     width: 16px;
 }
 
-.nav-list * {
-    margin: 0 3%;
-}
-
-#nav-left {
-    padding-left: 2%;
-    justify-content: flex-start;
-}
-
-#nav-right {
-    padding-right: 2%;
-    justify-content: flex-end;
-}
-
 #nav-title {
     font-size: 40px;
 }
@@ -107,7 +107,7 @@ nav, .nav-list {
     display: block;
     box-sizing: border-box;
     width: max-content;
-    padding: 8px 3%;
+    padding: 8px 8px 8px calc(3% + 16px);
 }
 
 /* Main */
