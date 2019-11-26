@@ -20,18 +20,18 @@ a:hover {
 
 /* Navigation bar */
 #top-gradient, #nav-bar {
-    width: 100%;
+    width: calc(100% - 10px);
     height: 80px;
     position: fixed;
     font-weight: 500;
     z-index: 1;
+    margin: 5px;
 }
 
 #top-gradient {
     transition: height 0.5s cubic-bezier(.15,.98,.33,1.29);
     box-shadow: 0 1px 20px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-radius: 8px;
 }
 
 #nav-bar * {
@@ -111,7 +111,7 @@ nav, .nav-list {
 
 /* Main */
 #main {
-    padding: 80px 20px 30px 20px;
+    padding: 85px 20px 30px 20px;
 }
 
 /* Footer */
