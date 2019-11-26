@@ -63,6 +63,7 @@ new Granim({
     element: '#top-gradient',
     direction: 'left-right',
     isPausedWhenNotInView: true,
+    stateTransitionSpeed: 500,
     states : {
         'default-state': {
             gradients: [
