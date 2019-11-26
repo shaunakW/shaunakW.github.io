@@ -1,5 +1,5 @@
 # shaunakW.github.io
-This is my homepage, where I plan to list all my projects and other stuff, possible even a bio.
+This is my homepage, where I plan to list all my projects and other stuff, possibly even a bio.
 
 ## Projects inside this site
 
@@ -20,3 +20,9 @@ These will always have a link to them in the navigation bar of this website
 ### Flask Blog - http://flaskblog.ga
 A blog website make using Python 3.7 and the Flask web framework.
 You can create an account, edit your account, make, update, and delete posts, reset passwords, and more.
+
+## Libraries used
+
+### [MSAL (Microsoft Authentication Library)](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+### [Anime.js](https://animejs.com/)
+### [Granim.js](https://sarcadass.github.io/granim.js/)
