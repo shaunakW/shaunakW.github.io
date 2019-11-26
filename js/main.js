@@ -67,16 +67,15 @@ new Granim({
     element: '#top-gradient',
     direction: 'left-right',
     isPausedWhenNotInView: true,
-    stateTransitionSpeed: 500,
     states : {
         'default-state': {
             gradients: [
-                ['#0abde3', '#2ecc71'],
-                ['#2ecc71', '#3498db'],
-                ['#3498db', '#9b59b6'],
-                ['#9b59b6', '#ee5253'],
-                ['#ee5253', '#54a0ff']
-            ]
+                ['#aa4b6b', '#3b8d99'],
+                ['#7f7fd5', '#91eae4'],
+                ['#fc466b', '#3f5efb'],
+                ['#00467f', '#a5cc82']
+            ],
+            transitionSpeed: 3000
         }
     }
 });
