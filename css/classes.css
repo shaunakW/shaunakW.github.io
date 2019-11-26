@@ -4,9 +4,8 @@ section {
 }
 
 .section {
-    background-color: #e4ebef;
-    border-radius: 30px;
-    /*box-shadow: 2px 2px 20px;*/
+    background-color: #ebeef0;
+    border-radius: 5px 5px 30px 30px;
     padding: 0 5px 10px 15px;
     overflow: auto;
 }
