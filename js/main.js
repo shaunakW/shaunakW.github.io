@@ -17,7 +17,7 @@ dropDownButton.onclick = function () {
             anime({
                 targets: '#drop-down',
                 opacity: 1,
-                duration: 500,
+                duration: 300,
                 easing: 'linear',
                 begin: () => dropDownButton.style.pointerEvents = 'none',
                 complete: () => dropDownButton.style.pointerEvents = 'auto'
@@ -46,7 +46,7 @@ dropDownButton.onclick = function () {
         });
         anime({
             targets: '#drop-down *',
-            translateY: anime.stagger(-10, {start: -50}),
+            translateY: anime.stagger(-5, {start: -50}),
             duration: 450,
             easing: 'easeOutCubic'
         });
