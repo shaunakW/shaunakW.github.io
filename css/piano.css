@@ -7,9 +7,13 @@
     z-index: 2;
 }
 
+.white-keys {
+    padding-top: 5px;
+}
+
 .white-keys > * {
     float: left;
-    height: calc(85vh - 30px);
+    height: 85vh;
     width: calc(100% / 7 - 0.5%);
     margin: 0 0.25%;
     background-color: #ecf0f1;
@@ -17,7 +21,7 @@
 
 .black-keys {
     position: fixed;
-    top: 0;
+    top: 5px;
     height: 100%;
     width: 100%;
     padding-left: calc(100% / 14);

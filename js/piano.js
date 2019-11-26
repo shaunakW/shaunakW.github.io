@@ -1,13 +1,13 @@
 anime({
     targets: '#octave-1 .white-key',
-    translateY: [-document.querySelector('#octave-1 .white-key').clientHeight, 0],
+    translateY: [-document.querySelector('#octave-1 .white-key').clientHeight - 10, 0],
     delay: anime.stagger(200, {start: 200}),
     easing: 'easeOutBack'
 });
 
 anime({
     targets: '#octave-1 .black-key',
-    translateY: [-document.querySelector('#octave-1 .black-key').clientHeight, 0],
+    translateY: [-document.querySelector('#octave-1 .black-key').clientHeight - 10, 0],
     delay: anime.stagger(200, {start: 1200}),
     easing: 'easeOutBack',
     complete: readyKeys
