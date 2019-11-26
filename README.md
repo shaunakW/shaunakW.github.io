@@ -10,12 +10,12 @@ Takes into account weekends, breaks, and special schedules.
 In the future, it might use the Canvas API to get homework assignments for whoever is signed in.
 
 ### Piano - https://shaunakW.github.io/piano
-An animated one-octave piano
+An animated one-octave piano.
 
-In the future, there might be an option to increase the size to two octaves
+In the future, there might be an option to increase the size to two octaves.
 
 ## Projects outside this site
-These will always have a link to them in the navigation bar of this website
+These will always have a link to them in the navigation bar of this website.
 
 ### Flask Blog - http://flaskblog.ga
 A blog website make using Python 3.7 and the Flask web framework.
