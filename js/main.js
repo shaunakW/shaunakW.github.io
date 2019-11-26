@@ -18,7 +18,9 @@ dropDownButton.onclick = function () {
                 targets: '#drop-down',
                 opacity: 1,
                 duration: 500,
-                easing: 'linear'
+                easing: 'linear',
+                begin: () => dropDownButton.style.pointerEvents = 'none',
+                complete: () => dropDownButton.style.pointerEvents = 'auto'
             });
             anime({
                 targets: '#drop-down *',
@@ -38,7 +40,9 @@ dropDownButton.onclick = function () {
             targets: '#drop-down',
             opacity: 0,
             duration: 125,
-            easing: 'linear'
+            easing: 'linear',
+            begin: () => dropDownButton.style.pointerEvents = 'none',
+            complete: () => dropDownButton.style.pointerEvents = 'auto'
         });
         anime({
             targets: '#drop-down *',

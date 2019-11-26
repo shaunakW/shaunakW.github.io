@@ -62,6 +62,7 @@ nav, .nav-list {
 }
 
 #nav-drop-down {
+    user-select: none;
     display: inline-block;
     white-space: nowrap;
     transition: transform 0.3s;
