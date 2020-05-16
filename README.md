@@ -11,8 +11,8 @@ In the future, there might be an option to increase the size to two octaves.
 ## Projects outside this site
 These will always have a link to them in the navigation bar of this website.
 
-### Flask Blog - http://flaskblog.ga
-A blog website make using Python 3.7 and the Flask web framework.
+### Flask Blog - http://flaskblog.pythonanywhere.com
+A blog website made using Python 3.7 and the Flask web framework.
 You can create an account, edit your account, make, update, and delete posts, reset passwords, and more.
 
 ## Libraries used
